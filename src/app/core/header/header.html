@@ -1,1 +1,7 @@
-<p>header works!</p>
+<nav>
+  <ul>
+    <li><a routerLink="/products">List</a></li>
+    <li><a routerLink="/products/uid1">'uid1' Details</a></li>
+    <li><a [routerLink]="['/', 'products', RoutePaths.ProductCreate]">Create</a></li>
+  </ul>
+</nav>

@@ -1,0 +1,15 @@
+<span highlight>product-list works!</span>
+
+<!-- new syntax: control flow -->
+@if (true) {
+  <p>contenu</p>
+} @else {
+  <p>autre contenu</p>
+}
+
+<!-- old syntax -->
+<p *ngIf="true; else autre">contenu</p>
+<ng-template #autre>
+  <p>autre contenu</p>
+</ng-template>
+
