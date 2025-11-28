@@ -27,6 +27,8 @@
 
   <h2>Avec observables:</h2>
   @for (product of products$ | async; track product.id) {
-    <app-product-card [product]="product" (showDetails)="seeDetails($event)"></app-product-card>
+    <app-product-card [product]="product" (showDetails)="seeDetails($event)">
+      <span #test>Id element: {{ product.id }}</span>
+    </app-product-card>
   }
 }
