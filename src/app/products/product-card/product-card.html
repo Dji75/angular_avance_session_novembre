@@ -1,0 +1,9 @@
+@let prod = product();
+@if (prod) {
+  Card:<br/>
+  <!-- @Input -->
+  <!-- <h2>{{ title }}</h2>-->
+  <!-- input -->
+  <h2>{{ prod.title }}</h2>
+  <button type="button" (click)="showDetails.emit(prod.id)">Show details</button>
+}

@@ -12,12 +12,12 @@
 <!--<ng-template #autre>-->
 <!--  <p>autre contenu</p>-->
 <!--</ng-template>-->
-<button type="button" (click)="loadProducts()">Load products</button>
+<button type="button" (click)="loadProducts()">Load products</button><br/>
 
 @if (loadingState() === RequestState.Loading) {
   Loading in progress
 } @else if (loadingState() === RequestState.Error) {
-  Erorr loading data
+  Error loading data
 } @else {
   <h2>Avec signals:</h2>
   @for (product of products(); track product.id) {
@@ -27,6 +27,6 @@
 
   <h2>Avec observables:</h2>
   @for (product of products$ | async; track product.id) {
-    <div>{{ product.title }}</div>
+    <app-product-card [product]="product" (showDetails)="seeDetails($event)"></app-product-card>
   }
 }

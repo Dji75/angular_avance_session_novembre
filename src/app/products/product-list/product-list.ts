@@ -1,23 +1,27 @@
 import { Component, inject } from '@angular/core';
-import { ProductApi } from '../services/product.api';
 import { Highlight } from '../../shared/directives/highlight';
 import { Store } from '@ngrx/store';
 import { loadProducts, productsSelectors } from '../../shared/stores/products.store';
 import { AsyncPipe } from '@angular/common';
 import { RequestState } from '../../shared/models/request-state';
+import { ProductCard } from '../product-card/product-card';
+import { Router } from '@angular/router';
+import { RoutePaths } from '../product-routes';
+
 
 @Component({
   selector: 'app-product-list',
   imports: [
     Highlight,
-    AsyncPipe
+    AsyncPipe,
+    ProductCard
   ],
   templateUrl: './product-list.html',
   styleUrl: './product-list.scss',
 })
 export default class ProductList {
-    // readonly #api = inject(ProductApi);
   readonly #store = inject(Store);
+  readonly #router = inject(Router);
 
   protected readonly products$ = this.#store.select(productsSelectors.products);
 
@@ -30,4 +34,8 @@ export default class ProductList {
   }
 
   protected readonly RequestState = RequestState;
+
+  seeDetails($event: string) {
+    this.#router.navigate(['/', 'products', $event]);
+  }
 }
