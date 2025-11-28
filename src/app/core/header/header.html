@@ -5,3 +5,20 @@
     <li><a [routerLink]="['/', 'products', RoutePaths.ProductCreate]">Create</a></li>
   </ul>
 </nav>
+
+<div>Valeur: {{ compteur }}</div>
+<div>Valeur signal: {{ signalCpt() }}</div>
+<div>Valeur signal: {{ signalCpt() }}</div>
+<!--<div>Valeur nested: {{ nestedSignals().count() }}</div>-->
+<input [value]="monFiltre()" (input)="updateFiltre($event.target)">
+<button type="button" (click)="loadProducts()">Charger mes données</button><br/>
+@if (productsSignal.error()) {
+  une erreur et survenue
+} @else if (!productsSignal.hasValue()) {
+  aucune valeur
+} @else {
+  @for (product of productsSignal.value(); track product.id) {
+    <div>Id produit: {{ product.title }}</div>
+  }
+
+}

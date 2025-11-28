@@ -1,7 +1,8 @@
 import { Routes } from '@angular/router';
+import { authGuard } from '../shared/guards/auth-guard';
 
 export enum RoutePaths {
-  ProductsList = '',
+  ProductsList = 'list',
   ProductsDetails = ':id',
   ProductCreate = 'create',
 }
@@ -17,6 +18,7 @@ export default [
   {
     path: RoutePaths.ProductCreate,
     loadComponent: () => import('./product-create/product-create'),
+    // canActivate: [authGuard]
   },
   {
     path: RoutePaths.ProductsDetails,
@@ -39,4 +41,5 @@ export default [
   //     },
   //   ]
   // },
+  { path: '', redirectTo: 'list', pathMatch: 'full' }
 ] satisfies Routes
