@@ -19,13 +19,13 @@
 } @else if (loadingState() === RequestState.Error) {
   Error loading data
 } @else {
-  <h2>Avec signals:</h2>
+  <h2 i18n="@@with-signals">Avec signals:</h2>
   @for (product of products(); track product.id) {
     <div>{{ product.title }}</div>
   }
 
 
-  <h2>Avec observables:</h2>
+  <h2 i18n="@@with-observables">Avec observables:</h2>
   @for (product of products$ | async; track product.id) {
     <app-product-card [product]="product" (showDetails)="seeDetails($event)">
       <span #test>Id element: {{ product.id }}</span>
